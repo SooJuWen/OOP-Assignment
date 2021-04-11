@@ -32,6 +32,6 @@ public  class  Economy extends Seat
 
     @Override
     public String toString() {
-        return super.toString() + "\n Economy Price     : RM" + decimalPoint(seatPrice);
+        return super.toString() + "\n Economy Price     : RM" + decimalPoint(seatPrice) + " (per station)";
     }
 }

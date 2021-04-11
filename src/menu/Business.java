@@ -32,6 +32,6 @@ public class Business extends Seat
 
     @Override
     public String toString() {
-        return super.toString() + "\n Business Price    : RM" + decimalPoint(seatPrice);
+        return super.toString() + "\n Business Price    : RM" + decimalPoint(seatPrice) + " (per station)";
     }
 }

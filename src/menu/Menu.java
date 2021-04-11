@@ -62,8 +62,7 @@ public class Menu {
             //call DeptStDetails method and return the deptSt obj
             DepartureStation departureStation = DeptStDetails(stationList);      
 
-            //show departure station name             // System.out.println(numStationDistance);  testing station distance
-
+            //show departure station name             
             System.out.println();
             System.out.println("----------------------------------------------");
             System.out.println(departureStation.toString());
@@ -77,9 +76,10 @@ public class Menu {
             System.out.println(departureStation.toString());
             System.out.println(destinationStation.toString());
 
+            //calculate number of stations travelled
             numStationDistance = Math.abs(destinationStation.getStationNumber() - departureStation.getStationNumber());
 
-            System.out.println("Number of station travelled: " + numStationDistance);
+            System.out.println(" Number of station travelled: " + numStationDistance);
 
 
             //start of choose seat 
@@ -127,7 +127,7 @@ public class Menu {
                     System.out.println("Number Of Station: " + numStationDistance);
                     TotalPrice = numStationDistance * numPass * ecoSeats.getSeatPrice();
                     System.out.printf("Total Price: RM %.2f" , TotalPrice);
-                    PassengerDetails(TotalPrice, departureStation, destinationStation, ecoSeats);       //call PassengerDetails() for Economy seats type
+                    PassengerDetails(TotalPrice, departureStation, destinationStation, numStationDistance, ecoSeats);       //call PassengerDetails() for Economy seats type
                     break;
                 }
                 case 'b':
@@ -140,7 +140,7 @@ public class Menu {
                     System.out.println("Number Of Station: " + numStationDistance);
                     TotalPrice = numStationDistance * numPass * busSeats.getSeatPrice();
                     System.out.printf("Total Price: RM %.2f" , TotalPrice);
-                    PassengerDetails(TotalPrice, departureStation, destinationStation, busSeats);       //call PassengerDetails() for Business seats type
+                    PassengerDetails(TotalPrice, departureStation, destinationStation, numStationDistance, busSeats);       //call PassengerDetails() for Business seats type
                     break;
                 }           
             }
@@ -273,7 +273,7 @@ public class Menu {
         return seatTypeOneChar;
     }
     
-    public static void PassengerDetails(double TotalPrice, DepartureStation departureStation, DestinationStation destinationStation, Seat seats) {
+    public static void PassengerDetails(double TotalPrice, DepartureStation departureStation, DestinationStation destinationStation, int numOfStation, Seat seats) {
         String name, IC, age;
         char gender, option;
         boolean invalid;
@@ -309,8 +309,8 @@ public class Menu {
         option = checkPass.confirmation(name, IC, age, gender);        
         switch (option) {
             case '1' : {
-                Passenger newPass = new Passenger(name, IC, age, gender);   //create new Passenger per loop
-                PaymentDetails(TotalPrice, departureStation, destinationStation, seats, newPass);       //call PaymentDetails() from here (not the main method), becuz if user cancel the purchase, it will just reloop
+                Passenger newPass = new Passenger(name.trim(), IC, age, gender);   //create new Passenger per loop
+                PaymentDetails(TotalPrice, departureStation, destinationStation, numOfStation, seats, newPass);       //call PaymentDetails() from here (not the main method), becuz if user cancel the purchase, it will just reloop
                 break;
             }
             case '2' :
@@ -319,7 +319,7 @@ public class Menu {
         }
     }
     
-    public static void PaymentDetails(double TotalPrice, DepartureStation departureStation, DestinationStation destinationStation, Seat seats, Passenger newPass) {
+    public static void PaymentDetails(double TotalPrice, DepartureStation departureStation, DestinationStation destinationStation, int numOfStation, Seat seats, Passenger newPass) {
         boolean inputNotValid;
         Scanner input = new Scanner(System.in);
         
@@ -356,11 +356,11 @@ public class Menu {
         System.out.println("          Payment Success!!!          ");
         System.out.println(" ==================================== ");
         
-        displayTicket(departureStation, destinationStation, seats, newPass, pay);
+        displayTicket(departureStation, destinationStation, numOfStation, seats, newPass, pay);
     }
     
-    public static void displayTicket(DepartureStation departureStation, DestinationStation destinationStation, Seat seats, Passenger newPass, Payment pay) {
-        Ticket trainticket = new Ticket(departureStation, destinationStation, seats, newPass, pay);
+    public static void displayTicket(DepartureStation departureStation, DestinationStation destinationStation, int numOfStation, Seat seats, Passenger newPass, Payment pay) {
+        Ticket trainticket = new Ticket(departureStation, destinationStation, numOfStation, seats, newPass, pay);
         System.out.println(trainticket.toString());
     }
 }
