@@ -16,9 +16,6 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         char routeMenuOption, option;
         int numStationDistance;
-        int numOfPassenger = 0;
-        double TotalPrice = 0;
-        int totalpass = 0;
                
                 
         //display menu
@@ -84,7 +81,7 @@ public class Menu {
         
         //start of choose seat 
         
-        chooseSeatType(numStationDistance);
+        double TotalPrice = chooseSeatType(numStationDistance);
         
         //end of seat 
         
@@ -190,7 +187,7 @@ public class Menu {
         return destinationStation;
     }
     
-    public static void chooseSeatType(int numberDistance)
+    public static double chooseSeatType(int numberDistance)
     {
         boolean InvalidStType = true;
         boolean InvalidNumPass = true;
@@ -294,6 +291,7 @@ public class Menu {
             }
                     
         }
+         return TotalPrice;
     }
     
     
