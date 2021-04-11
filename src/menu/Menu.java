@@ -15,7 +15,7 @@ public class Menu {
       
         Scanner scanner = new Scanner(System.in);
         char routeMenuOption, option;
-        int numStationDistance = 0;
+        int numStationDistance;
         int numOfPassenger = 0;
         double TotalPrice = 0;
         int totalpass = 0;
@@ -63,7 +63,8 @@ public class Menu {
         //call DeptStDetails method and return the deptSt obj
         DepartureStation departureStation = DeptStDetails(stationList);      
               
-        //show departure station name       
+        //show departure station name             // System.out.println(numStationDistance);  testing station distance
+
         System.out.println();
         System.out.println("----------------------------------------------");
         System.out.println(departureStation.toString());
@@ -82,7 +83,6 @@ public class Menu {
         System.out.println("Number of station travelled: " + numStationDistance);
         
         
-      // System.out.println(numStationDistance);  testing station distance
 
         boolean InvalidStType = true;
         boolean InvalidNumPass = true;
@@ -147,50 +147,7 @@ public class Menu {
         System.out.println(" ==================================== ");
         System.out.println("           Seat Details           ");
         System.out.println(" ==================================== ");  
-        
-        switch(seatTypeOneChar)
-        {
-            case 'e':
-            case 'E':  //economy choice
-            {
-                
-                 Economy e1 = new Economy();
-                  for(int i = 0; i < numPass; i++)
-                  {
-                      Economy eSeat = new Economy("Economy"); 
-                  }
-                  e1.setSeatPrice();
-                  //System.out.println(e1.getTotalSeatUsed());
-                  System.out.println("Seat Type: Economy (RM 5 per Station)");
-                  System.out.println("Number Of Passenger: " + numPass);
-                  System.out.println("Number Of Station: " + numStationDistance);
-                   TotalPrice = numStationDistance * numPass * e1.getSeatPrice();
-                  System.out.printf("Total Price: RM %.2f" , TotalPrice);
-                break;
-            }
-            case 'b':
-            case 'B':  //Business choice
-            {
-                Business b1 = new Business();
-                  for(int i = 0; i < numPass; i++)
-                  {
-                      Business bSeat = new Business("Business"); 
-                  }
-                  b1.setSeatPrice();
-                  System.out.println("Seat Type: Business (RM 10 per Station)");
-                  System.out.println("Number Of Passenger: " + numPass);
-                  System.out.println("Number Of Station: " + numStationDistance);
-                   TotalPrice = numStationDistance * numPass * b1.getSeatPrice();
-                  System.out.printf("Total Price: RM %.2f" , TotalPrice);
-                break;
-            }
-                    
-        }
-        
-//        else
-//        {
-//            System.out.println("There is only " + (n));  tell user there is only ? seat remaining
-//        }
+        chooseSeatType(seatTypeOneChar, numPass, numStationDistance, TotalPrice);
         
         //end of seat 
         
@@ -295,6 +252,48 @@ public class Menu {
         
         return destinationStation;
     }
+    
+    public static void chooseSeatType(char typeOfSeat, int numberPassenger, int numberDistance, double ttlPrice)
+    {
+         switch(typeOfSeat)
+        {
+            case 'e':
+            case 'E':  //economy choice
+            {
+                
+                 Seat e1 = new Economy();
+                  for(int i = 0; i < numberPassenger; i++)
+                  {
+                      Economy eSeat = new Economy("Economy"); 
+                  }
+                  e1.setSeatPrice();
+                  System.out.println("Seat Type: Economy (RM 5 per Station)");
+                  System.out.println("Number Of Passenger: " + numberPassenger);
+                  System.out.println("Number Of Station: " + numberDistance);
+                   ttlPrice = numberDistance * numberPassenger * e1.getSeatPrice();
+                  System.out.printf("Total Price: RM %.2f" , ttlPrice);
+                break;
+            }
+            case 'b':
+            case 'B':  //Business choice
+            {
+                Seat b1 = new Business();
+                  for(int i = 0; i < numberPassenger; i++)
+                  {
+                      Business bSeat = new Business("Business"); 
+                  }
+                  b1.setSeatPrice();
+                  System.out.println("Seat Type: Business (RM 10 per Station)");
+                  System.out.println("Number Of Passenger: " + numberPassenger);
+                  System.out.println("Number Of Station: " + numberDistance);
+                   ttlPrice = numberDistance * numberPassenger * b1.getSeatPrice();
+                  System.out.printf("Total Price: RM %.2f" , ttlPrice);
+                break;
+            }
+                    
+        }
+    }
+    
     
     public static void PassengerDetails(double TotalPrice) {
         String name, IC, age;
