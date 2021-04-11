@@ -82,72 +82,9 @@ public class Menu {
          
         System.out.println("Number of station travelled: " + numStationDistance);
         
+        //start of choose seat 
         
-
-        boolean InvalidStType = true;
-        boolean InvalidNumPass = true;
-        System.out.println("\n\n");
-        System.out.println(" ==================================== ");
-        System.out.println("           Seat Selection           ");
-        System.out.println(" ==================================== ");     
-        System.out.println("Pricing Per Station: \nEconomy - RM 5 \nBusiness - RM 10");
-        Scanner sType = new Scanner(System.in);
-        char seatTypeOneChar = ' ';
-        int numPass = 0;
-        do  //This do while is for seatType
-        {
-            try
-            {
-                System.out.print("Please choose the seat type (E - Economy, B - Business): ");
-                seatTypeOneChar = sType.next().charAt(0);
-                if(seatTypeOneChar == 'e' || seatTypeOneChar == 'E' || seatTypeOneChar == 'b' || seatTypeOneChar == 'B')  //check whether user enter this 4 type of char if yes return false then direct go next step
-                InvalidStType = false;
-                if(InvalidStType == true) //if above statement return true = typeofseat will stil remain true to run this string and redo this step
-                {
-                System.out.println();
-                System.out.println("Invalid! Please enter only 'e' or 'E' for Economy or 'b' or 'B' for Business.");
-                }
-                
-            }
-            catch(InputMismatchException ex)
-            {
-            }
-        }
-        while(InvalidStType);
-        
-        do{ //This do while is for number of passenger and <= 10 person
-                try{
-                    System.out.print("Enter Number of Passenger: ");
-                    numPass = scanner.nextInt(); 
-                    if(numPass <= 10) //error checking for user enter maximum up to 10 person only
-                    {
-                        InvalidNumPass = false;
-                    }
-                    else 
-                    {
-                        InvalidNumPass = true;
-
-                    }
-                    if(InvalidNumPass == true) //if above statement return true mean it will display this string and redo this step agian.
-                    {
-                    System.out.println();
-                    System.out.println("Sorry. One purchase maximum of passenger only allow up to 10.");
-                    }
-                }
-                catch(InputMismatchException ex){  //error checking for user enter digit only
-                    System.out.println();
-                    System.out.println("Invalid! please enter a digit number.");
-                    scanner.nextLine();
-                }
-            }while(InvalidNumPass);
-
-        
-        
-        System.out.println("\n");
-        System.out.println(" ==================================== ");
-        System.out.println("           Seat Details           ");
-        System.out.println(" ==================================== ");  
-        chooseSeatType(seatTypeOneChar, numPass, numStationDistance, TotalPrice);
+        chooseSeatType(numStationDistance);
         
         //end of seat 
         
@@ -253,41 +190,106 @@ public class Menu {
         return destinationStation;
     }
     
-    public static void chooseSeatType(char typeOfSeat, int numberPassenger, int numberDistance, double ttlPrice)
+    public static void chooseSeatType(int numberDistance)
     {
-         switch(typeOfSeat)
+        boolean InvalidStType = true;
+        boolean InvalidNumPass = true;
+        Scanner scanner = new Scanner(System.in);
+        double TotalPrice = 0;
+        System.out.println("\n\n");
+        System.out.println(" ==================================== ");
+        System.out.println("           Seat Selection           ");
+        System.out.println(" ==================================== ");     
+        System.out.println("Pricing Per Station: \nEconomy - RM 5 \nBusiness - RM 10");
+        Scanner sType = new Scanner(System.in);
+        char seatTypeOneChar = ' ';
+        int numPass = 0;
+        do  //This do while is for seatType
+        {
+            try
+            {
+                System.out.print("Please choose the seat type (E - Economy, B - Business): ");
+                seatTypeOneChar = sType.next().charAt(0);
+                if(seatTypeOneChar == 'e' || seatTypeOneChar == 'E' || seatTypeOneChar == 'b' || seatTypeOneChar == 'B')  //check whether user enter this 4 type of char if yes return false then direct go next step
+                InvalidStType = false;
+                if(InvalidStType == true) //if above statement return true = typeofseat will stil remain true to run this string and redo this step
+                {
+                System.out.println();
+                System.out.println("Invalid! Please enter only 'e' or 'E' for Economy or 'b' or 'B' for Business.");
+                }
+                
+            }
+            catch(InputMismatchException ex)
+            {
+            }
+        }
+        while(InvalidStType);
+        
+        do{ //This do while is for number of passenger and <= 10 person
+                try{
+                    System.out.print("Enter Number of Passenger: ");
+                    numPass = scanner.nextInt(); 
+                    if(numPass <= 10) //error checking for user enter maximum up to 10 person only
+                    {
+                        InvalidNumPass = false;
+                    }
+                    else 
+                    {
+                        InvalidNumPass = true;
+
+                    }
+                    if(InvalidNumPass == true) //if above statement return true mean it will display this string and redo this step agian.
+                    {
+                    System.out.println();
+                    System.out.println("Sorry. One purchase maximum of passenger only allow up to 10.");
+                    }
+                }
+                catch(InputMismatchException ex){  //error checking for user enter digit only
+                    System.out.println();
+                    System.out.println("Invalid! please enter a digit number.");
+                    scanner.nextLine();
+                }
+            }while(InvalidNumPass);
+
+        
+        
+        System.out.println("\n");
+        System.out.println(" ==================================== ");
+        System.out.println("           Seat Details           ");
+        System.out.println(" ==================================== ");          
+         switch(seatTypeOneChar)
         {
             case 'e':
             case 'E':  //economy choice
             {
                 
                  Seat e1 = new Economy();
-                  for(int i = 0; i < numberPassenger; i++)
+                  for(int i = 0; i < numPass; i++)
                   {
                       Economy eSeat = new Economy("Economy"); 
                   }
                   e1.setSeatPrice();
                   System.out.println("Seat Type: Economy (RM 5 per Station)");
-                  System.out.println("Number Of Passenger: " + numberPassenger);
+                  System.out.println("Number Of Passenger: " + numPass);
                   System.out.println("Number Of Station: " + numberDistance);
-                   ttlPrice = numberDistance * numberPassenger * e1.getSeatPrice();
-                  System.out.printf("Total Price: RM %.2f" , ttlPrice);
+                   TotalPrice = numberDistance * numPass * e1.getSeatPrice();
+                  System.out.printf("Total Price: RM %.2f" , TotalPrice);
                 break;
             }
             case 'b':
             case 'B':  //Business choice
             {
                 Seat b1 = new Business();
-                  for(int i = 0; i < numberPassenger; i++)
+                  for(int i = 0; i < numPass; i++)
                   {
                       Business bSeat = new Business("Business"); 
                   }
                   b1.setSeatPrice();
                   System.out.println("Seat Type: Business (RM 10 per Station)");
-                  System.out.println("Number Of Passenger: " + numberPassenger);
+                  System.out.println("Number Of Passenger: " + numPass);
                   System.out.println("Number Of Station: " + numberDistance);
-                   ttlPrice = numberDistance * numberPassenger * b1.getSeatPrice();
-                  System.out.printf("Total Price: RM %.2f" , ttlPrice);
+                   TotalPrice = numberDistance * numPass * b1.getSeatPrice();
+                  System.out.printf("Total Price: RM %.2f" , TotalPrice);
                 break;
             }
                     
