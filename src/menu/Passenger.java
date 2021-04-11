@@ -121,16 +121,16 @@ public final class Passenger extends Person{
                 System.out.print("Enter option : ");
                 option = input.next().charAt(0);
                 if (option != '1' && option != '2') {                               //to check if user's value is within 1 or 2
-                    System.out.println("****");
+                    System.out.println("************");
                     System.out.println("Invalid option! Please enter [1/2].");
-                    System.out.println("****");
+                    System.out.println("************");
                     invalid = true;
                 } else
                     invalid = false;
             } catch (InputMismatchException ex) {
-                System.out.println("****");
+                System.out.println("************");
                 System.out.println("Invalid option! Please enter [1/2].");
-                System.out.println("****");
+                System.out.println("************");
                 invalid = true;
                 input.nextLine();
             }
@@ -140,6 +140,8 @@ public final class Passenger extends Person{
 
     @Override
     public String toString() {
-        return "passengerID=" + passengerID + super.toString();
+        return " PassengerID : " + passengerID + super.toString();
     }  
 }
+
+//changed

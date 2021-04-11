@@ -1,33 +1,39 @@
-package menu;
-
-/**
- *
- * @author eric5
+/*
+author : Eric
+date : 
+file type : subclass
+inherited from : Seat
  */
+package menu;
 
 public class Business extends Seat
 {
-    private double p = 0;
-
-    Business()
-    {
-        
-    }
+    private double seatPrice = 0.0;
     
-    Business(String sType)
+    Business(String sType, int numPass)
     {
-        super(sType);
+        super(sType, numPass);
     }
     
     @Override
     public void setSeatPrice()
     {
-        p = 10.0;
+        this.seatPrice = 10.0;
     };
 
     @Override
     public double getSeatPrice() {
-        return p;
+        return this.seatPrice;
+    }
+    
+    public String decimalPoint(double price) {
+        return String.format("%.2f", price);
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\n Business Price    : RM" + decimalPoint(seatPrice);
+    }
 }
+
+//changed

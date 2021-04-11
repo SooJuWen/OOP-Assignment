@@ -1,32 +1,39 @@
+/*
+author : Eric
+date : 
+file type : subclass
+inherited from : Seat
+ */
 package menu;
 
-/**
- *
- * @author eric5
- */
 public  class  Economy extends Seat
 {
-    private double p = 0;
-
-     Economy()
-    {
-        
-    }
+    private double seatPrice = 0.0;
     
-    Economy(String sType)
+    Economy(String sType, int numPass)
     {
-        super(sType);
+        super(sType, numPass);
     }
     @Override
     public void setSeatPrice()
     {
-        p = 5.0;
+        seatPrice = 5.0;
     };
 
     @Override
     public double getSeatPrice() 
     {
-         return p;
+         return seatPrice;
     }
-   
+    
+    public String decimalPoint(double price) {
+        return String.format("%.2f", price);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\n Economy Price     : RM" + decimalPoint(seatPrice);
+    }
 }
+
+//changed

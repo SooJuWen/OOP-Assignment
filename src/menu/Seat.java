@@ -1,50 +1,37 @@
+/*
+author : Eric
+date : 
+file type : superclass
+inherits : Business, Economy
+ */
 package menu;
 
-/**
- *
- * @author eric5
- */
 public abstract class Seat 
 {
-    protected String seatType = "";
-    protected Double seatPrice;
-    private static int seatCount = 0; //because keep update so use static
-    private int sNo = 0;
-   // private String seatID = "";
-    private String sType = "";
+    protected String sType;
+    protected int numPass;
     
-    Seat()
+    Seat(String ssType, int numPass)
     {
+        this.sType = ssType;
+        this.numPass = numPass;
     }
-    
-    Seat(String ssType)
-    {
-       // seatID = ssID;
-        sType = ssType;
-        seatCount++;
+
+    public int getNumPass() {
+        return numPass;
     }
-    
-    
-    
-//    public void setSeatID(int seatNo) // see how many passenger ticket needed, for loop each pass = 1 id 
-//    {
-//        sNo = seatNo;
-//    }
-//    
-//    public int getSeatID() //return id in string with S represent as seatID infront
-//    {
-//        return sNo;
-//    }
-    
+
+    public void setNumPass(int numPass) {
+        this.numPass = numPass;
+    }
     
     public abstract void setSeatPrice(); //override inside ecomy and business so using abstract
     public abstract double getSeatPrice();
 
-    public int getTotalSeatUsed()
-    {
-        return seatCount;
-    }
-    
+    @Override
+    public String toString() {
+        return " Seat Type         : " + sType + "\n Quantity of seats : " + numPass;
+    }   
 }
 
-
+//changed

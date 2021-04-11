@@ -4,6 +4,8 @@ date : 9/4/2021
  */
 package menu;
 
+import java.util.*;
+
 public class Payment {
     private double total_payment;
     private double balance;
@@ -40,9 +42,15 @@ public class Payment {
         this.balance = this.payment_input - this.total_payment;
         total_amount += this.total_payment;
     }
+    
+    public String decimalPoint(double price) {
+        return String.format("%.2f", price);
+    }
 
     @Override
     public String toString() {
-        return "Payment{" + "total_payment=" + total_payment + ", balance=" + balance + ", payment_input=" + payment_input + '}';
+        return " Total payment  : RM" + decimalPoint(total_payment) + "\n Balance        : RM" + decimalPoint(balance);
     }
 }
+
+//changed

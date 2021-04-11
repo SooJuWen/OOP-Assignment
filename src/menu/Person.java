@@ -52,9 +52,18 @@ public class Person {
     public void setGender(char gender) {
         this.gender = gender;
     }
+    
+    public String genderString(char gender) {
+        if (Character.toUpperCase(gender) == 'M')
+            return "Male";
+        else
+            return "Female";
+    }
 
     @Override
     public String toString() {
-        return ", name=" + name + ", IC=" + IC + ", age=" + age + ", gender=" + gender;
+        return "\n Name      : " + name + "\n IC number : " + IC + "\n Age       : " + age + "\n Gender    : " + genderString(gender);
     }
 }
+
+//changed

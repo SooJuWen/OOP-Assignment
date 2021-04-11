@@ -1,8 +1,9 @@
 /*
-Author: juwen
-Class: DestinationStation
-*/
-
+author : Juwen
+date :
+class type : subclass
+inherited from : Station
+ */
 package menu;
 
 public class DestinationStation extends Station{
@@ -21,16 +22,16 @@ public class DestinationStation extends Station{
     public boolean verifyDestinationStation(int dtStNum, int dpStNum){
         
         if(dtStNum == dpStNum){
-            System.out.println("****************************************************");
+            System.out.println("******************");
             System.out.println("This is your departure station, please choose again!");
-            System.out.println("****************************************************");
+            System.out.println("******************");
             
             return false;
         } 
         else if(dtStNum < 1 || dtStNum > 5){
-            System.out.println("********************************************");
+            System.out.println("****************");
             System.out.println("Invalid station number, please choose again!");
-            System.out.println("********************************************");
+            System.out.println("****************");
             
             return false;
         }
@@ -57,6 +58,8 @@ public class DestinationStation extends Station{
 
     @Override
     public String toString() {
-        return "Destination station : " + super.toString() + " station";
+        return " Destination station : " + super.toString() + " station";
     }  
 }
+
+//changed
