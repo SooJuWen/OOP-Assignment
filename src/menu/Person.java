@@ -65,5 +65,3 @@ public class Person {
         return "\n Name      : " + name + "\n IC number : " + IC + "\n Age       : " + age + "\n Gender    : " + genderString(gender);
     }
 }
-
-//changed

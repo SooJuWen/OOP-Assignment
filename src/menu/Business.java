@@ -35,5 +35,3 @@ public class Business extends Seat
         return super.toString() + "\n Business Price    : RM" + decimalPoint(seatPrice);
     }
 }
-
-//changed

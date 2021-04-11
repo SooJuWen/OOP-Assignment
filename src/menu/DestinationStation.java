@@ -61,5 +61,3 @@ public class DestinationStation extends Station{
         return " Destination station : " + super.toString() + " station";
     }  
 }
-
-//changed

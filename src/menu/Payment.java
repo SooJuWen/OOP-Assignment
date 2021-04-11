@@ -52,5 +52,3 @@ public class Payment {
         return " Total payment  : RM" + decimalPoint(total_payment) + "\n Balance        : RM" + decimalPoint(balance);
     }
 }
-
-//changed

@@ -17,133 +17,140 @@ public class Menu {
         char routeMenuOption, option;
         int numStationDistance, numPass = 0;
         double TotalPrice = 0.0;
-        boolean InvalidNumPass = true;
-                
-        //display menu
-        do{
-            System.out.println(" ===========================");
-            System.out.println("     Ticketing System      ");
-            System.out.println(" ===========================");
-            System.out.println("   [1] Buy tickets          ");
-            System.out.println("   [2] Check stations       ");
-            System.out.println("   [3] Exit                 ");
-            System.out.println(" ===========================");
-            System.out.println();
-            System.out.print("What you want to do? >> ");
-            option = scanner.next().charAt(0);
+        boolean InvalidNumPass = true, inputNotValid;
+        
+        do {        
+            //display menu
+            do{
+                System.out.println(" ===========================");
+                System.out.println("     Ticketing System      ");
+                System.out.println(" ===========================");
+                System.out.println("   [1] Buy tickets          ");
+                System.out.println("   [2] Check stations       ");
+                System.out.println("   [3] Exit                 ");
+                System.out.println(" ===========================");
+                System.out.println();
+                System.out.print("What you want to do? >> ");
+                option = scanner.next().charAt(0);
             
             
-            if (option == '2'){
-                do{
-                    routeMenuOption = 0;                
-                    Station.showStationList(stationList);
-                    System.out.println(" [1]Check routes     [Others]Exit");
-                    System.out.print(" Enter your option >>>");
-                    char stationMenuOption = scanner.next().charAt(0);
-                
-                    if(stationMenuOption == '1'){
-                        System.out.println();
-                        Station.showRoute();
-                        System.out.println(" [1]Go back      [Others]Exit to menu");
+                if (option == '2'){
+                    do{
+                        routeMenuOption = 0;                
+                        Station.showStationList(stationList);
+                        System.out.println(" [1]Check routes     [Others]Exit");
                         System.out.print(" Enter your option >>>");
-                        routeMenuOption = scanner.next().charAt(0);
-                    
-                    }
-                }while(routeMenuOption == '1');
-                 
-            }
-            if(option == '3')
-                System.exit(0);
-            
+                        char stationMenuOption = scanner.next().charAt(0);
+
+                        if(stationMenuOption == '1'){
+                            System.out.println();
+                            Station.showRoute();
+                            System.out.println(" [1]Go back      [Others]Exit to menu");
+                            System.out.print(" Enter your option >>>");
+                            routeMenuOption = scanner.next().charAt(0);
+
+                        }
+                    }while(routeMenuOption == '1');
+
+                }
+                if(option == '3')
+                    System.exit(0);
+
+                System.out.println();
+            }while(option != '1');
+
+            //call DeptStDetails method and return the deptSt obj
+            DepartureStation departureStation = DeptStDetails(stationList);      
+
+            //show departure station name             // System.out.println(numStationDistance);  testing station distance
+
             System.out.println();
-        }while(option != '1');
-        
-        //call DeptStDetails method and return the deptSt obj
-        DepartureStation departureStation = DeptStDetails(stationList);      
-              
-        //show departure station name             // System.out.println(numStationDistance);  testing station distance
+            System.out.println("----------------------------------------------");
+            System.out.println(departureStation.toString());
 
-        System.out.println();
-        System.out.println("----------------------------------------------");
-        System.out.println(departureStation.toString());
-             
-        //call DestStDetails method and return the destSt obj
-        DestinationStation destinationStation = DestStDetails(stationList, departureStation.getStationNumber());
-     
-        //show departure and destinaton station name     
-        System.out.println();
-        System.out.println("----------------------------------------------");
-        System.out.println(departureStation.toString());
-        System.out.println(destinationStation.toString());
-     
-        numStationDistance = Math.abs(destinationStation.getStationNumber() - departureStation.getStationNumber());
-         
-        System.out.println("Number of station travelled: " + numStationDistance);
-        
-        
-        //start of choose seat 
-        char seatTypeOneChar = chooseSeatType();
-        
-        do{ //This do while is for number of passenger and <= 10 person
-                try{
-                    System.out.print("Enter Number of Passenger: ");
-                    numPass = scanner.nextInt(); 
-                    if(numPass <= 10) //error checking for user enter maximum up to 10 person only
-                    {
-                        InvalidNumPass = false;
-                    }
-                    else 
-                    {
-                        InvalidNumPass = true;
+            //call DestStDetails method and return the destSt obj
+            DestinationStation destinationStation = DestStDetails(stationList, departureStation.getStationNumber());
 
+            //show departure and destinaton station name     
+            System.out.println();
+            System.out.println("----------------------------------------------");
+            System.out.println(departureStation.toString());
+            System.out.println(destinationStation.toString());
+
+            numStationDistance = Math.abs(destinationStation.getStationNumber() - departureStation.getStationNumber());
+
+            System.out.println("Number of station travelled: " + numStationDistance);
+
+
+            //start of choose seat 
+            char seatTypeOneChar = chooseSeatType();
+
+            do{ //This do while is for number of passenger and <= 10 person
+                    try{
+                        System.out.print("Enter Number of Passenger: ");
+                        numPass = scanner.nextInt(); 
+                        if(numPass <= 10) //error checking for user enter maximum up to 10 person only
+                        {
+                            InvalidNumPass = false;
+                        }
+                        else 
+                        {
+                            InvalidNumPass = true;
+
+                        }
+                        if(InvalidNumPass == true) //if above statement return true mean it will display this string and redo this step agian.
+                        {
+                        System.out.println();
+                        System.out.println("Sorry. One purchase maximum of passenger only allow up to 10.");
+                        }
                     }
-                    if(InvalidNumPass == true) //if above statement return true mean it will display this string and redo this step agian.
-                    {
-                    System.out.println();
-                    System.out.println("Sorry. One purchase maximum of passenger only allow up to 10.");
+                    catch(InputMismatchException ex){  //error checking for user enter digit only
+                        System.out.println();
+                        System.out.println("Invalid! please enter a digit number.");
+                        scanner.nextLine();
                     }
-                }
-                catch(InputMismatchException ex){  //error checking for user enter digit only
-                    System.out.println();
-                    System.out.println("Invalid! please enter a digit number.");
-                    scanner.nextLine();
-                }
-            }while(InvalidNumPass);
-        
-        System.out.println("\n");
-        System.out.println(" ==================================== ");
-        System.out.println("           Seat Details           ");
-        System.out.println(" ==================================== ");
-        switch(seatTypeOneChar)
-        {
-            case 'e':
-            case 'E':  //economy choice
-            {               
-                Seat ecoSeats = new Economy("Economy", numPass);
-                ecoSeats.setSeatPrice();
-                System.out.println("Seat Type: Economy (RM 5 per Station)");
-                System.out.println("Number Of Passenger: " + numPass);
-                System.out.println("Number Of Station: " + numStationDistance);
-                TotalPrice = numStationDistance * numPass * ecoSeats.getSeatPrice();
-                System.out.printf("Total Price: RM %.2f" , TotalPrice);
-                PassengerDetails(TotalPrice, departureStation, destinationStation, ecoSeats);       //call PassengerDetails() for Economy seats type
-                break;
-            }
-            case 'b':
-            case 'B':  //Business choice
+                }while(InvalidNumPass);
+
+            System.out.println("\n");
+            System.out.println(" ==================================== ");
+            System.out.println("           Seat Details           ");
+            System.out.println(" ==================================== ");
+            switch(seatTypeOneChar)
             {
-                Seat busSeats = new Business("Business", numPass);
-                busSeats.setSeatPrice();
-                System.out.println("Seat Type: Business (RM 10 per Station)");
-                System.out.println("Number Of Passenger: " + numPass);
-                System.out.println("Number Of Station: " + numStationDistance);
-                TotalPrice = numStationDistance * numPass * busSeats.getSeatPrice();
-                System.out.printf("Total Price: RM %.2f" , TotalPrice);
-                PassengerDetails(TotalPrice, departureStation, destinationStation, busSeats);       //call PassengerDetails() for Business seats type
-                break;
-            }           
-        }
-        //end of seat 
+                case 'e':
+                case 'E':  //economy choice
+                {               
+                    Seat ecoSeats = new Economy("Economy", numPass);
+                    ecoSeats.setSeatPrice();
+                    System.out.println("Seat Type: Economy (RM 5 per Station)");
+                    System.out.println("Number Of Passenger: " + numPass);
+                    System.out.println("Number Of Station: " + numStationDistance);
+                    TotalPrice = numStationDistance * numPass * ecoSeats.getSeatPrice();
+                    System.out.printf("Total Price: RM %.2f" , TotalPrice);
+                    PassengerDetails(TotalPrice, departureStation, destinationStation, ecoSeats);       //call PassengerDetails() for Economy seats type
+                    break;
+                }
+                case 'b':
+                case 'B':  //Business choice
+                {
+                    Seat busSeats = new Business("Business", numPass);
+                    busSeats.setSeatPrice();
+                    System.out.println("Seat Type: Business (RM 10 per Station)");
+                    System.out.println("Number Of Passenger: " + numPass);
+                    System.out.println("Number Of Station: " + numStationDistance);
+                    TotalPrice = numStationDistance * numPass * busSeats.getSeatPrice();
+                    System.out.printf("Total Price: RM %.2f" , TotalPrice);
+                    PassengerDetails(TotalPrice, departureStation, destinationStation, busSeats);       //call PassengerDetails() for Business seats type
+                    break;
+                }           
+            }
+            //end of seat 
+
+            System.out.println("Press any key to continue.");
+            Scanner next = new Scanner(System.in);
+            String nextCust = next.nextLine();
+        
+        } while (true);
     }
 
     public static DepartureStation DeptStDetails(Station[] stationList){
@@ -356,6 +363,4 @@ public class Menu {
         Ticket trainticket = new Ticket(departureStation, destinationStation, seats, newPass, pay);
         System.out.println(trainticket.toString());
     }
-    
-    // changed
 }

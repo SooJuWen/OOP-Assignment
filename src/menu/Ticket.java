@@ -33,14 +33,11 @@ public class Ticket {
     public String toString() {
         return "\n\n\n ========================================= \n                  Ticket\n ========================================= \n" + 
                 "\n Purchased date: " + purchasedDate + "\n\n" + deptstations + "\n" + deststaions + 
-                "\n" + seats +
-                "\n -----------------------------------------" + 
-                "\n" + passenger + 
-                "\n -----------------------------------------" + 
-                "\n" + payment +
-                "\n\n ========================================= \n";
+                "\n" + seats + "\n -----------------------------------------" + 
+                "\n" + passenger + "\n -----------------------------------------" + 
+                "\n" + payment + "\n\n This ticket has to be used before 11.59pm "
+                + "\n        within the purchase date." + 
+                "\n ========================================= \n                 THANK YOU \n ========================================= \n";
     }
   
 }
-
-//changed

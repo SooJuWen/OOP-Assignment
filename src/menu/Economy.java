@@ -35,5 +35,3 @@ public  class  Economy extends Seat
         return super.toString() + "\n Economy Price     : RM" + decimalPoint(seatPrice);
     }
 }
-
-//changed

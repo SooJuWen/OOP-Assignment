@@ -33,5 +33,3 @@ public abstract class Seat
         return " Seat Type         : " + sType + "\n Quantity of seats : " + numPass;
     }   
 }
-
-//changed

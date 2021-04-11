@@ -143,5 +143,3 @@ public final class Passenger extends Person{
         return " PassengerID : " + passengerID + super.toString();
     }  
 }
-
-//changed
