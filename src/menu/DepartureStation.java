@@ -1,6 +1,5 @@
 /*
 author : Juwen
-date :
 class type : subclass
 inherited from : Station
  */

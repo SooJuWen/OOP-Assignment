@@ -1,6 +1,5 @@
 /*
 author : Eric
-date : 
 file type : subclass
 inherited from : Seat
  */
@@ -14,6 +13,7 @@ public  class  Economy extends Seat
     {
         super(sType, numPass);
     }
+    
     @Override
     public void setSeatPrice()
     {

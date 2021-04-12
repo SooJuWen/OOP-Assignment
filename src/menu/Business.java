@@ -1,6 +1,5 @@
 /*
 author : Eric
-date : 
 file type : subclass
 inherited from : Seat
  */

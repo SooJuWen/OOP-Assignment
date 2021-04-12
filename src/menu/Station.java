@@ -1,6 +1,7 @@
 /*
-Author: juwen
-Class: Station
+author: juwen
+file type : superclass
+inherits : DepartureStation, DestinationStation
 */
 
 package menu;

@@ -1,6 +1,5 @@
 /*
 author : Jason
-date : 4/4/2021
 file type : subclass
 inherits : Person
  */
@@ -17,7 +16,7 @@ public final class Passenger extends Person{
     public Passenger(String name, String IC, String age, char gender) {
         super(name, IC, age, gender);
         total_passengers++;
-        createID(total_passengers);         // once new passenger buy a ticket, they are given an ID
+        createID(total_passengers);             // once new passenger buy a ticket, they are given an ID
     }
 
     public static int getTotal_passengers() {
@@ -45,13 +44,13 @@ public final class Passenger extends Person{
     public boolean validifyName(String name) {
         int spaceCount = 0;
         for (int i = 0; i < name.length() ; i++) {
-            if (!(Character.isLetter(name.charAt(i)))) {
-                if (!(Character.isWhitespace(name.charAt(i)))) {
+            if (!(Character.isLetter(name.charAt(i)))) {                        // if the character is not a letter
+                if (!(Character.isWhitespace(name.charAt(i)))) {                // if the character is not a whitespace
                     System.out.println("Invalid name! No other symbols except letters in name.");
                     return true;
                 } else {
                     spaceCount++;
-                    if (spaceCount == name.length()) {
+                    if (spaceCount == name.length()) {                          // to check if every characters are whitespaces
                         System.out.println("Invalid name! Please enter with letters.");
                         return true;
                     }
@@ -63,12 +62,12 @@ public final class Passenger extends Person{
     
     public boolean validifyIC(String IC) {
         for (int i = 0; i < IC.length() ; i++) {
-            if (!(Character.isDigit(IC.charAt(i)))) {
+            if (!(Character.isDigit(IC.charAt(i)))) {                           // if character is not a digit
                 System.out.println("Invalid IC number! Please enter in digits.");
                 return true;
             }
         }
-        if (IC.length() != 12) {
+        if (IC.length() != 12) {                                                // if the length of IC number not fulfill the actual condition
             System.out.println("Invalid IC number! IC number need 12 digits.");
             return true;
         }
@@ -79,7 +78,7 @@ public final class Passenger extends Person{
         boolean check;
         char confirm;
         for (int i = 0; i < age.length() ; i++) {
-            if (!(Character.isDigit(age.charAt(i)))) {
+            if (!(Character.isDigit(age.charAt(i)))) {                          // if character is not a digit
                 System.out.println("Invalid Age! Please enter in digits.");
                 return true;
             }
@@ -88,12 +87,12 @@ public final class Passenger extends Person{
     }
     
     public boolean validifyGender(char gender) {       
-        if (!(Character.isLetter(gender))){
+        if (!(Character.isLetter(gender))){                                     // if character is not a letter
             System.out.println("Invalid gender! Please enter [M/F].");
             return true;
         }
         if (!((Character.toUpperCase(gender) == 'M') || (Character.toUpperCase(gender) == 'F'))) {
-            System.out.println("Invalid gender! Please enter [M/F].");
+            System.out.println("Invalid gender! Please enter [M/F].");          // if character keyed in not M or F
             return true;
         }
         return false;
@@ -114,18 +113,19 @@ public final class Passenger extends Person{
         else
             System.out.println(" Gender    : Female");
         System.out.println(" ==================================== ");        
-        System.out.println(" [1] Confirm and Proceed   [2] Cancel");        
+        System.out.println(" [1] Confirm and Proceed   [2] Cancel");            // if customers decided to cancel the ticket purchase   
         System.out.println(" ==================================== ");
         do {
-            try {                                                                   //to test if user input the correct value
+            try {
                 System.out.print("Enter option : ");
                 option = input.next().charAt(0);
-                if (option != '1' && option != '2') {                               //to check if user's value is within 1 or 2
+                if (option != '1' && option != '2') {                           //to check if user's value is within 1 or 2
                     System.out.println("************");
                     System.out.println("Invalid option! Please enter [1/2].");
                     System.out.println("************");
                     invalid = true;
                 } else
+                    System.out.println();
                     invalid = false;
             } catch (InputMismatchException ex) {
                 System.out.println("************");

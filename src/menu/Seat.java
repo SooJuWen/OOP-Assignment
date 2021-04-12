@@ -1,6 +1,5 @@
 /*
 author : Eric
-date : 
 file type : superclass
 inherits : Business, Economy
  */
@@ -25,7 +24,7 @@ public abstract class Seat
         this.numPass = numPass;
     }
     
-    public abstract void setSeatPrice(); //override inside ecomy and business so using abstract
+    public abstract void setSeatPrice(); //override inside economy and business so using abstract
     public abstract double getSeatPrice();
 
     @Override

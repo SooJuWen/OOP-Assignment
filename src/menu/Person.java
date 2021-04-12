@@ -1,6 +1,5 @@
 /*
 author : Jason
-date : 4/4/2021
 file type : superclass
 inherits : Passenger
  */
@@ -53,7 +52,7 @@ public class Person {
         this.gender = gender;
     }
     
-    public String genderString(char gender) {
+    public String genderString(char gender) {           // change character of M or F to words
         if (Character.toUpperCase(gender) == 'M')
             return "Male";
         else

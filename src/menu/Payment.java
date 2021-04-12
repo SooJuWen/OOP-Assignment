@@ -1,16 +1,14 @@
 /*
 author : Jason
-date : 9/4/2021
+class : Payment
  */
 package menu;
 
-import java.util.*;
-
 public class Payment {
-    private double total_payment;
-    private double balance;
-    private double payment_input;
-    private static double total_amount = 0.0;
+    private double total_payment;               // payment that customers need to pay
+    private double balance;                     // balance that will be returned back to customers
+    private double payment_input;               // input of payment that the customers will pay with
+    private static double total_amount = 0.0;   // to store the total amount of earns (for report's purpose only if we have it)
     
     public Payment() {}
     
@@ -43,7 +41,7 @@ public class Payment {
         total_amount += this.total_payment;
     }
     
-    public String decimalPoint(double price) {
+    public String decimalPoint(double price) {      // make all prices to 2 decimal points when printing out
         return String.format("%.2f", price);
     }
 

@@ -1,6 +1,6 @@
 /*
-Class: Ticket
-Author: Jason, Ju Wen, Eric
+author: Jason, Ju Wen, Eric
+class : Ticket
 */
 
 package menu;
@@ -8,14 +8,15 @@ package menu;
 import  java.time.LocalDate;
 import java.time.format.DateTimeFormatter; 
 
-public class Ticket {
-    private DepartureStation deptstations;
-    private DestinationStation deststaions;
-    private int numberOfStation;
-    private Seat seats;
-    private Passenger passenger;
-    private Payment payment;
-    private String purchasedDate;
+///========================== author : All ==========================///
+public class Ticket {                           // aggregation applied by taking in objects from different classes
+    private final DepartureStation deptstations;
+    private final DestinationStation deststaions;
+    private final int numberOfStation;
+    private final Seat seats;
+    private final Passenger passenger;
+    private final Payment payment;
+    private final String purchasedDate;
 
     public Ticket(DepartureStation deptstations, DestinationStation deststaions, int numberOfStation, Seat seats, Passenger newPass, Payment pay) {
         this.deptstations = deptstations;
@@ -32,7 +33,7 @@ public class Ticket {
     }
 
     @Override
-    public String toString() {
+    public String toString() {              // retrieve all toString methods from all objects from different classes to make up a ticket
         return "\n\n\n ========================================= \n                  Ticket\n ========================================= \n" + 
                 "\n Purchased date: " + purchasedDate + "\n\n" + deptstations + "\n" + deststaions + 
                 "\n Stations travelled  : " + numberOfStation +
@@ -44,3 +45,4 @@ public class Ticket {
     }
   
 }
+///==================================================================///

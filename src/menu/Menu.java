@@ -1,6 +1,5 @@
 /*
 author : Juwen, Eric, Jason
-date :
 file : driver program / main program
  */
 package menu;
@@ -16,9 +15,10 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         char routeMenuOption, option;
         int numStationDistance, numPass = 0;
-        double TotalPrice = 0.0;
+        double TotalPrice;
         boolean InvalidNumPass = true, inputNotValid;
         
+        ///========================== author : All ==========================///
         do {        
             //display menu
             do{
@@ -34,7 +34,7 @@ public class Menu {
                 option = scanner.next().charAt(0);
             
             
-                if (option == '2'){
+                if (option == '2'){                                             // check stations option
                     do{
                         routeMenuOption = 0;                
                         Station.showStationList(stationList);
@@ -53,11 +53,13 @@ public class Menu {
                     }while(routeMenuOption == '1');
 
                 }
-                if(option == '3')
+                if(option == '3') {                                             // exit option
+                    System.out.println("\nThank you and have a nice day!");
                     System.exit(0);
+                }
 
                 System.out.println();
-            }while(option != '1');
+            }while(option != '1');                                              // buy ticket option, out of loop and straight away start all the ticket buying process
 
             //call DeptStDetails method and return the deptSt obj
             DepartureStation departureStation = DeptStDetails(stationList);      
@@ -82,7 +84,7 @@ public class Menu {
             System.out.println(" Number of station travelled: " + numStationDistance);
 
 
-            //start of choose seat 
+            ///========================= author : Eric ==========================///
             char seatTypeOneChar = chooseSeatType();
 
             do{ //This do while is for number of passenger and <= 10 person
@@ -144,20 +146,22 @@ public class Menu {
                     break;
                 }           
             }
-            //end of seat 
+            ///==================================================================///
 
             System.out.println("Press any key to continue.");
             Scanner next = new Scanner(System.in);
             String nextCust = next.nextLine();
         
         } while (true);
+        ///==================================================================///
     }
 
+    ///========================= author : Juwen =========================///
     public static DepartureStation DeptStDetails(Station[] stationList){
         Scanner scanner = new Scanner(System.in);
         DepartureStation dpStVerification = new DepartureStation();
         int dpStNum = 0;        //variables that store dept number chose by users
-        boolean inputNotValid = true;
+        boolean inputNotValid;
         
         //display station list from DepartureStation class
         DepartureStation.showStationList(stationList);
@@ -200,7 +204,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         DestinationStation dtStVerification = new DestinationStation();
         int dtStNum = 0;        //variables that store dest number chose by users
-        boolean inputNotValid = true;
+        boolean inputNotValid;
         
         //display station list from DestinationStaion class
         DestinationStation.showStationList(stationList, dpStNum);
@@ -237,7 +241,9 @@ public class Menu {
         
         return destinationStation;
     }
+    ///==================================================================///
     
+    ///========================= author : Eric =========================///
     public static char chooseSeatType()
     {
         boolean InvalidStType = true;
@@ -272,7 +278,9 @@ public class Menu {
 
         return seatTypeOneChar;
     }
+    ///==================================================================///
     
+    ///========================= author : Jason =========================///
     public static void PassengerDetails(double TotalPrice, DepartureStation departureStation, DestinationStation destinationStation, int numOfStation, Seat seats) {
         String name, IC, age;
         char gender, option;
@@ -358,9 +366,12 @@ public class Menu {
         
         displayTicket(departureStation, destinationStation, numOfStation, seats, newPass, pay);
     }
+    ///==================================================================///
     
+    ///========================== author : All ==========================///
     public static void displayTicket(DepartureStation departureStation, DestinationStation destinationStation, int numOfStation, Seat seats, Passenger newPass, Payment pay) {
         Ticket trainticket = new Ticket(departureStation, destinationStation, numOfStation, seats, newPass, pay);
         System.out.println(trainticket.toString());
     }
+    ///==================================================================///
 }
