@@ -10,17 +10,17 @@ import java.time.format.DateTimeFormatter;
 
 ///========================== author : All ==========================///
 public class Ticket {                           // aggregation applied by taking in objects from different classes
-    private final DepartureStation deptstations;
-    private final DestinationStation deststaions;
-    private final int numberOfStation;
-    private final Seat seats;
-    private final Passenger passenger;
-    private final Payment payment;
-    private final String purchasedDate;
+    private DepartureStation deptstations;
+    private DestinationStation deststations;
+    private int numberOfStation;
+    private Seat seats;
+    private Passenger passenger;
+    private Payment payment;
+    private String purchasedDate;
 
     public Ticket(DepartureStation deptstations, DestinationStation deststaions, int numberOfStation, Seat seats, Passenger newPass, Payment pay) {
         this.deptstations = deptstations;
-        this.deststaions = deststaions;
+        this.deststations = deststaions;
         this.numberOfStation = numberOfStation;
         this.seats = seats;
         this.passenger = newPass;
@@ -35,7 +35,7 @@ public class Ticket {                           // aggregation applied by taking
     @Override
     public String toString() {              // retrieve all toString methods from all objects from different classes to make up a ticket
         return "\n\n\n ========================================= \n                  Ticket\n ========================================= \n" + 
-                "\n Purchased date: " + purchasedDate + "\n\n" + deptstations + "\n" + deststaions + 
+                "\n Purchased date: " + purchasedDate + "\n\n" + deptstations + "\n" + deststations + 
                 "\n Stations travelled  : " + numberOfStation +
                 "\n" + seats + "\n -----------------------------------------" + 
                 "\n" + passenger + "\n -----------------------------------------" + 
