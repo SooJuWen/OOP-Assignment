@@ -9,7 +9,7 @@ public  class  Economy extends Seat
 {
     private double seatPrice = 0.0;
     
-    Economy(String sType, int numPass)
+    public Economy(String sType, int numPass)
     {
         super(sType, numPass);
     }

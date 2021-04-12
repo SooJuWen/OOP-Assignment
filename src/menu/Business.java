@@ -9,7 +9,7 @@ public class Business extends Seat
 {
     private double seatPrice = 0.0;
     
-    Business(String sType, int numPass)
+    public Business(String sType, int numPass)
     {
         super(sType, numPass);
     }
