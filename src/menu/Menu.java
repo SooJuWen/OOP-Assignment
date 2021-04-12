@@ -16,7 +16,7 @@ public class Menu {
         char routeMenuOption, option;
         int numStationDistance, numPass = 0;
         double TotalPrice;
-        boolean InvalidNumPass = true, inputNotValid;
+        boolean InvalidNumPass = true;
         
         ///========================== author : All ==========================///
         do {        
