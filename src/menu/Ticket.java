@@ -18,9 +18,9 @@ public class Ticket {                           // aggregation applied by taking
     private Payment payment;
     private String purchasedDate;
 
-    public Ticket(DepartureStation deptstations, DestinationStation deststaions, int numberOfStation, Seat seats, Passenger newPass, Payment pay) {
+    public Ticket(DepartureStation deptstations, DestinationStation deststations, int numberOfStation, Seat seats, Passenger newPass, Payment pay) {
         this.deptstations = deptstations;
-        this.deststations = deststaions;
+        this.deststations = deststations;
         this.numberOfStation = numberOfStation;
         this.seats = seats;
         this.passenger = newPass;

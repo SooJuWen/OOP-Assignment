@@ -10,7 +10,7 @@ public abstract class Seat
     protected String sType;
     protected int numPass;
     
-    Seat(String ssType, int numPass)
+    public Seat(String ssType, int numPass)
     {
         this.sType = ssType;
         this.numPass = numPass;
