@@ -252,14 +252,16 @@ public class Menu {
         System.out.println(" ==================================== ");
         System.out.println("           Seat Selection           ");
         System.out.println(" ==================================== ");     
-        System.out.println("Pricing Per Station: \nEconomy - RM 5 \nBusiness - RM 10");
+        System.out.println(" Pricing Per Station: \n   [E] Economy  - RM 5.00 \n   [B] Business - RM 10.00");
         Scanner sType = new Scanner(System.in);
         char seatTypeOneChar = ' ';
         do  //This do while is for seatType
         {
             try
             {
-                System.out.print("Please choose the seat type (E - Economy, B - Business): ");
+                System.out.println(" ==================================== ");
+                System.out.println();
+                System.out.print("Choose your seat type: ");
                 seatTypeOneChar = sType.next().charAt(0);
                 if(seatTypeOneChar == 'e' || seatTypeOneChar == 'E' || seatTypeOneChar == 'b' || seatTypeOneChar == 'B')  //check whether user enter this 4 type of char if yes return false then direct go next step
                 InvalidStType = false;
