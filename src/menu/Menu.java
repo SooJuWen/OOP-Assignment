@@ -182,7 +182,6 @@ public class Menu {
                     System.out.println("************");
                     System.out.println("Invalid input, please enter a number");
                     System.out.println("************");
-                    System.out.println();
                     inputNotValid = true;
                     scanner.nextLine();
                     
@@ -248,7 +247,7 @@ public class Menu {
     {
         boolean InvalidStType = true;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\n\n");
+        System.out.println("\n");
         System.out.println(" ==================================== ");
         System.out.println("           Seat Selection           ");
         System.out.println(" ==================================== ");     
