@@ -38,8 +38,10 @@ public class Business extends Seat implements DataInput
     public void howToInput() 
     {
         System.out.println();
-        System.out.println("---Enter a number between 1 and 10---");  
+        System.out.println("---Enter a number between 1 and 10---");      
     }
+
+  
 
     
     

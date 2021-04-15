@@ -5,7 +5,7 @@ inherits : Business, Economy
  */
 package menu;
 
-public abstract class Seat implements DataInput 
+public abstract class Seat
 {
     protected String sType;
     protected int numPass;
@@ -34,8 +34,4 @@ public abstract class Seat implements DataInput
         return " Seat Type         : " + sType + "\n Quantity of seats : " + numPass;
     }
     
-    public void howToInput()
-    {
-        System.out.println("Blank");
-    }
 }
