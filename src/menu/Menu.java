@@ -86,9 +86,25 @@ public class Menu {
 
             ///========================= author : Eric ==========================///
             char seatTypeOneChar = chooseSeatType();
-
             do{ //This do while is for number of passenger and <= 10 person
                     try{
+                        switch(seatTypeOneChar)
+                        {
+                            case 'e':
+                            case 'E': 
+                            {
+                                Seat eco1 = new Economy("Economy", 0); //for create economy object only to run next line method
+                                eco1.disMsgNumberPass(); 
+                                break;
+                            }
+                             case 'b':
+                             case 'B':  //Business choice
+                             {
+                                Seat bus1 = new Business("Business", 0); //for create business object only to run next line method
+                                bus1.disMsgNumberPass();
+                                break; 
+                            }
+                        }
                         System.out.print("Enter Number of Passenger: ");
                         numPass = scanner.nextInt(); 
                         if(numPass <= 10) //error checking for user enter maximum up to 10 person only
@@ -105,7 +121,8 @@ public class Menu {
                         System.out.println();
                         System.out.println("Sorry. One purchase maximum of passenger only allow up to 10.");
                         }
-                    }
+                        }
+                    
                     catch(InputMismatchException ex){  //error checking for user enter digit only
                         System.out.println();
                         System.out.println("Invalid! please enter a digit number.");
@@ -262,6 +279,7 @@ public class Menu {
             {
                 System.out.println(" ==================================== ");
                 System.out.println();
+                System.out.println("---Enter a character 'E' or 'B'------");
                 System.out.print("Choose your seat type: ");
                 seatTypeOneChar = sType.next().charAt(0);
                 if(seatTypeOneChar == 'e' || seatTypeOneChar == 'E' || seatTypeOneChar == 'b' || seatTypeOneChar == 'B')  //check whether user enter this 4 type of char if yes return false then direct go next step

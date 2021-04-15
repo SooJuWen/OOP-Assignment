@@ -5,7 +5,7 @@ inherited from : Seat
  */
 package menu;
 
-public  class  Economy extends Seat
+public  class  Economy extends Seat implements ChooseNumber
 {
     private double seatPrice = 0.0;
     
@@ -33,5 +33,12 @@ public  class  Economy extends Seat
     @Override
     public String toString() {
         return super.toString() + "\n Economy Price     : RM" + decimalPoint(seatPrice) + " (per station)";
+    }
+
+    @Override
+    public void disMsgNumberPass() 
+    {
+        System.out.println();
+        System.out.println("---Enter a number between 1 and 10---");
     }
 }
