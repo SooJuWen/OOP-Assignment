@@ -124,9 +124,11 @@ public final class Passenger extends Person{
                     System.out.println("Invalid option! Please enter [1/2].");
                     System.out.println("************");
                     invalid = true;
-                } else
+                } else{
                     System.out.println();
                     invalid = false;
+                }
+                    
             } catch (InputMismatchException ex) {
                 System.out.println("************");
                 System.out.println("Invalid option! Please enter [1/2].");
