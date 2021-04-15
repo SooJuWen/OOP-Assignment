@@ -5,7 +5,7 @@ inherited from : Station
  */
 package menu;
 
-public class DestinationStation extends Station{
+public class DestinationStation extends Station implements DataInput{
 
     public boolean validDtStNum;
     
@@ -21,16 +21,16 @@ public class DestinationStation extends Station{
     public boolean verifyDestinationStation(int dtStNum, int dpStNum){
         
         if(dtStNum == dpStNum){
-            System.out.println("******************");
+            System.out.println("\n ******************");
             System.out.println("This is your departure station, please choose again!");
-            System.out.println("******************");
+            System.out.println(" ******************");
             
             return false;
         } 
         else if(dtStNum < 1 || dtStNum > 5){
-            System.out.println("****************");
+            System.out.println("\n ****************");
             System.out.println("Invalid station number, please choose again!");
-            System.out.println("****************");
+            System.out.println(" ****************");
             
             return false;
         }
@@ -55,6 +55,11 @@ public class DestinationStation extends Station{
         System.out.println(" ==================================== ");
     }
 
+    @Override
+    public void howToInput() {
+        System.out.println("---Enter a number between 1 and 5----");
+    }
+    
     @Override
     public String toString() {
         return " Destination station : " + super.toString() + " station";

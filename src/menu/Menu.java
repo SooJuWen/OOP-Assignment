@@ -159,7 +159,7 @@ public class Menu {
     ///========================= author : Juwen =========================///
     public static DepartureStation DeptStDetails(Station[] stationList){
         Scanner scanner = new Scanner(System.in);
-        DepartureStation dpStVerification = new DepartureStation();
+        DepartureStation dpStInput = new DepartureStation();
         int dpStNum = 0;        //variables that store dept number chose by users
         boolean inputNotValid;
         
@@ -173,6 +173,7 @@ public class Menu {
             do{
                 try{
                     System.out.println();
+                    dpStInput.howToInput();
                     System.out.print("Choose your departure station: ");
                     dpStNum = scanner.nextInt();
                     inputNotValid = false;
@@ -189,9 +190,9 @@ public class Menu {
                 
             }while(inputNotValid);
               
-            dpStVerification.validDpStNum = dpStVerification.verifyDepartureStation(dpStNum);
+            dpStInput.validDpStNum = dpStInput.verifyDepartureStation(dpStNum);
             
-        }while(dpStVerification.validDpStNum == false);
+        }while(dpStInput.validDpStNum == false);
         
         
         DepartureStation departureStation = new DepartureStation(dpStNum, stationList[dpStNum - 1].getStationName());
@@ -201,7 +202,7 @@ public class Menu {
     
     public static DestinationStation DestStDetails(Station[] stationList, int dpStNum){
         Scanner scanner = new Scanner(System.in);
-        DestinationStation dtStVerification = new DestinationStation();
+        DestinationStation dtStInput = new DestinationStation();
         int dtStNum = 0;        //variables that store dest number chose by users
         boolean inputNotValid;
         
@@ -215,6 +216,7 @@ public class Menu {
             do{
                 try{
                     System.out.println();
+                    dtStInput.howToInput();
                     System.out.print("Choose your destination station: ");
                     dtStNum = scanner.nextInt();
                     
@@ -232,9 +234,9 @@ public class Menu {
             }while(inputNotValid);
             
             
-            dtStVerification.validDtStNum = dtStVerification.verifyDestinationStation(dtStNum, dpStNum);
+            dtStInput.validDtStNum = dtStInput.verifyDestinationStation(dtStNum, dpStNum);
             
-        }while(dtStVerification.validDtStNum == false);
+        }while(dtStInput.validDtStNum == false);
         
         DestinationStation destinationStation = new DestinationStation(dtStNum, stationList[dtStNum - 1].getStationName());
         
