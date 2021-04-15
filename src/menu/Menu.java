@@ -94,14 +94,14 @@ public class Menu {
                             case 'E': 
                             {
                                 Seat eco1 = new Economy("Economy", 0); //for create economy object only to run next line method
-                                eco1.disMsgNumberPass(); 
+                                eco1.howToInput();
                                 break;
                             }
                              case 'b':
                              case 'B':  //Business choice
                              {
                                 Seat bus1 = new Business("Business", 0); //for create business object only to run next line method
-                                bus1.disMsgNumberPass();
+                                bus1.howToInput();
                                 break; 
                             }
                         }

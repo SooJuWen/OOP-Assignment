@@ -5,7 +5,7 @@ inherits : Business, Economy
  */
 package menu;
 
-public abstract class Seat implements ChooseNumber
+public abstract class Seat implements DataInput 
 {
     protected String sType;
     protected int numPass;
@@ -34,8 +34,8 @@ public abstract class Seat implements ChooseNumber
         return " Seat Type         : " + sType + "\n Quantity of seats : " + numPass;
     }
     
-    public void disMsgNumberPass() 
+    public void howToInput()
     {
-        System.out.println("Hi");
+        System.out.println("Blank");
     }
 }

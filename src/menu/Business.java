@@ -5,7 +5,7 @@ inherited from : Seat
  */
 package menu;
 
-public class Business extends Seat implements ChooseNumber
+public class Business extends Seat implements DataInput
 {
     private double seatPrice = 0.0;
     
@@ -35,9 +35,14 @@ public class Business extends Seat implements ChooseNumber
     }
 
     @Override
-    public void disMsgNumberPass() 
+    public void howToInput() 
     {
         System.out.println();
-        System.out.println("---Enter a number between 1 and 10---");
+        System.out.println("---Enter a number between 1 and 10---");  
     }
+
+    
+    
+
+    
 }
