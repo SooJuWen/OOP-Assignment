@@ -7,7 +7,7 @@ package menu;
 
 import java.util.*;
 
-public final class Passenger extends Person{
+public final class Passenger extends Person implements DataInput {
     private static int total_passengers = 0;    // record down total number of passengers
     private String passengerID;                 // an ID to identify the tickets buyer
     
@@ -139,9 +139,14 @@ public final class Passenger extends Person{
         } while(invalid);
         return option;
     }
+    
+    @Override
+    public void howToInput() {
+        System.out.println("Please only insert the buyer's details!\n");
+    }
 
     @Override
     public String toString() {
         return " PassengerID : " + passengerID + super.toString();
-    }  
+    }
 }

@@ -5,7 +5,7 @@ inherits : Business, Economy
  */
 package menu;
 
-public abstract class Seat 
+public abstract class Seat
 {
     protected String sType;
     protected int numPass;
@@ -30,5 +30,5 @@ public abstract class Seat
     @Override
     public String toString() {
         return " Seat Type         : " + sType + "\n Quantity of seats : " + numPass;
-    }   
+    }
 }

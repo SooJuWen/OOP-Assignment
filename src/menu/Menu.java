@@ -292,10 +292,10 @@ public class Menu {
         System.out.println("\n\n");
         System.out.println(" ==================================== ");
         System.out.println("           Personal Details           ");
-        System.out.println(" ==================================== ");
-        System.out.println("Please only insert the buyer's details!\n");
+        System.out.println(" ==================================== ");       
         Scanner input = new Scanner(System.in);     // to capture new input for string
         Passenger checkPass = new Passenger();      // an object created just for checking
+        checkPass.howToInput();
         do {
             System.out.print(" Name        : ");
             name = input.nextLine();
@@ -325,8 +325,7 @@ public class Menu {
                 break;
             }
             case '2' :
-                break;
-                // restart the whole system here to prompt the next user
+                break;          // restart the whole system here to prompt the next user
         }
     }
     
