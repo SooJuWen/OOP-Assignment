@@ -7,7 +7,7 @@ package menu;
 
 import java.util.*;
 
-public final class Passenger extends Person implements DataInput {
+public final class Passenger extends Person implements DataInput, Cancelable {
     private static int total_passengers = 0;    // record down total number of passengers
     private String passengerID;                 // an ID to identify the tickets buyer
     
@@ -143,6 +143,34 @@ public final class Passenger extends Person implements DataInput {
     @Override
     public void howToInput() {
         System.out.println("Please only insert the buyer's details!\n");
+    }
+    
+    @Override
+    public char confirmCancel() {
+        Scanner input = new Scanner(System.in);
+        boolean invalid;
+        char option = '\u0000';
+        do {
+            try {
+                System.out.println("Confirm to cancel? [Y/N]");
+                option = input.next().charAt(0);
+                if (Character.toUpperCase(option) != 'Y' && Character.toUpperCase(option) != 'N') {
+                    System.out.println("************");
+                    System.out.println("Invalid input! Please enter [Y/N].");
+                    System.out.println("************");
+                    invalid = true;
+                } else {
+                    invalid = false;
+                }
+            } catch (InputMismatchException ex) {
+                System.out.println("************");
+                System.out.println("Invalid input! Please enter [Y/N].");
+                System.out.println("************");
+                invalid = true;
+            }
+        } while(invalid);
+        
+        return Character.toUpperCase(option);
     }
 
     @Override

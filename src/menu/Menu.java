@@ -286,8 +286,8 @@ public class Menu {
     ///========================= author : Jason =========================///
     public static void PassengerDetails(double TotalPrice, DepartureStation departureStation, DestinationStation destinationStation, int numOfStation, Seat seats) {
         String name, IC, age;
-        char gender, option;
-        boolean invalid;
+        char gender, option, cancel;
+        boolean invalid, dontCancel;
         
         System.out.println("\n\n");
         System.out.println(" ==================================== ");
@@ -317,16 +317,25 @@ public class Menu {
             invalid = checkPass.validifyGender(gender);
         } while(invalid);
         
-        option = checkPass.confirmation(name, IC, age, gender);        
-        switch (option) {
-            case '1' : {
-                Passenger newPass = new Passenger(name.trim(), IC, age, gender);   //create new Passenger per loop
-                PaymentDetails(TotalPrice, departureStation, destinationStation, numOfStation, seats, newPass);       //call PaymentDetails() from here (not the main method), becuz if user cancel the purchase, it will just reloop
-                break;
+        do {
+            dontCancel = false;
+            option = checkPass.confirmation(name, IC, age, gender);        
+            switch (option) {
+                case '1' : {
+                    Passenger newPass = new Passenger(name.trim(), IC, age, gender);   //create new Passenger per loop
+                    PaymentDetails(TotalPrice, departureStation, destinationStation, numOfStation, seats, newPass);       //call PaymentDetails() from here (not the main method), becuz if user cancel the purchase, it will just reloop
+                    break;
+                }
+                case '2' : {
+                    cancel = checkPass.confirmCancel();          //cancel confirmation
+                    if (cancel == 'N')
+                        dontCancel = true;
+                    else
+                        System.out.println("Thank you and come again!\n");
+                    break;          // restart the whole system here to prompt the next user
+                }
             }
-            case '2' :
-                break;          // restart the whole system here to prompt the next user
-        }
+        } while (dontCancel);
     }
     
     public static void PaymentDetails(double TotalPrice, DepartureStation departureStation, DestinationStation destinationStation, int numOfStation, Seat seats, Passenger newPass) {
