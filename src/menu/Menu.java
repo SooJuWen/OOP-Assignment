@@ -5,6 +5,8 @@ file : driver program / main program
 package menu;
 
 import java.util.*;
+import  java.time.LocalDate;
+import java.time.format.DateTimeFormatter; 
 
 public class Menu {  
     public static void main(String[] args) 
@@ -21,19 +23,24 @@ public class Menu {
         ///========================== author : All ==========================///
         do {        
             //display menu
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formater = DateTimeFormatter.ofPattern("dd/MM/yyyy, E");
+            String currentDate = today.format(formater);
+            
             do{
-                System.out.println(" ===========================");
-                System.out.println("     Ticketing System      ");
-                System.out.println(" ===========================");
-                System.out.println("   [1] Buy tickets          ");
-                System.out.println("   [2] Check stations       ");
-                System.out.println("   [3] Exit                 ");
-                System.out.println(" ===========================");
+                System.out.println(" =========================================");
+                System.out.println("           Train Ticketing System          ");
+                System.out.println(" =========================================");
+                System.out.println("    [1] Buy tickets          ");
+                System.out.println("    [2] Check stations       ");
+                System.out.println("    [3] Exit                 ");
+                System.out.println("            ------------------------------");
+                System.out.println("            Current Date: " + currentDate);
+                System.out.println(" =========================================");
                 System.out.println();
-                System.out.print("What you want to do? >> ");
+                System.out.print("What do you want to do? >> ");
                 option = scanner.next().charAt(0);
-            
-            
+                      
                 if (option == '2'){                                             // check stations option
                     do{
                         routeMenuOption = 0;                
